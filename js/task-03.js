@@ -13,18 +13,9 @@ const images = [
   },
 ];
 const galleryListEl = document.querySelector("ul");
-
-const elements = images.map((image) => {
-  const galleryItemEl = document.createElement("li");
-  galleryItemEl.classList.add("img-item");
-
-  const galleryImgEl = document.createElement("img");
-  galleryImgEl.src = image.url;
-  galleryImgEl.alt = image.alt;
-
-  galleryItemEl.appendChild(galleryImgEl);
-
-  return galleryItemEl;
-});
-
-galleryListEl.append(...elements);
+const element = images
+  .map(function ({ url, alt }) {
+    return `<li><img src = '${url}' alt = '${alt}' width="320"></li>`;
+  })
+  .join("");
+galleryListEl.insertAdjacentHTML("afterbegin", element);
